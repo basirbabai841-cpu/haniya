@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saylani Tech – Digitizing the Future</title>                                                                                                                                 
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">                                                                
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Poppins', sans-serif; color: #555; line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    h1, h2, h3, h4 { color: #222; font-weight: 700; transition: color 0.3s; }
+
+    :root { --gradient-primary: linear-gradient(to right, #2bb673, #0072ff); }
+
+    .navbar { background: #fff; border: none; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: background 0.3s; }
+    .navbar-brand { font-weight: 700; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; }
+
+    .hero-section { background: var(--gradient-primary); color: white; padding: 120px 0 100px; position: relative; transition: background 0.3s, color 0.3s; }
+    .hero-section h1 { color: white; font-size: 45px; margin-bottom: 20px; }
+    .hero-section p { font-size: 18px; opacity: 0.9; margin-bottom: 30px; }
+    .hero-img { border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+
+    .section-title { margin-bottom: 60px; text-align: center; }
+    .feature-item { padding: 40px 20px; background: #fff; border-radius: 10px; transition: all 0.3s; border: 1px solid #f0f0f0; margin-bottom: 30px; }
+    .feature-item:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.1); transform: translateY(-5px); }
+    .feature-icon { font-size: 40px; margin-bottom: 20px; display: inline-block; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .pricing-box { border: 1px solid #eee; padding: 40px 20px; border-radius: 10px; text-align: center; transition: all 0.3s; }
+    .pricing-box.active { border: 2px solid #2bb673; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+    .price { font-size: 40px; font-weight: 700; color: #2bb673; }
+
+    .video-area { background: #f9f9f9; padding: 80px 0; }
+
+    .newsletter { background: var(--gradient-primary); padding: 60px 0; color: white; text-align: center; transition: background 0.3s, color 0.3s; }
+    .newsletter input { border-radius: 50px; padding: 25px; border: none; width: 300px; max-width: 100%; color: #333; }
+    .btn-submit { border-radius: 50px; padding: 12px 30px; background: #222; color: white; border: none; margin-left: 10px; }
+
+    footer { padding: 40px 0; background: #222; color: #fff; text-align: center; transition: background 0.3s, color 0.3s; }
+    .btn-custom { background: white; color: #0072ff; font-weight: 600; border-radius: 50px; padding: 12px 30px; }
+
+    /* Dark Mode */
+    body.dark-mode { background: #121212; color: #e0e0e0; }
+    body.dark-mode .navbar { background: #1e1e1e; }
+    body.dark-mode .hero-section { background: #1a1a1a; color: #fff; }
+    body.dark-mode .feature-item, body.dark-mode .pricing-box { background: #1f1f1f; border-color: #333; }
+    body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode p { color: #ffffff; }
+    body.dark-mode footer { background: #000; color: #fff; }
+
+
+
+    /* ===== Animations ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.7s ease;
+}
+
+.scale-in.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Button hover upgrade */
+.btn-custom:hover,
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  transition: 0.3s;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <header style="display: flex; align-items: center;">
+        <img width="70" src="smit.jpg" class="logo" style="margin-right: 10px;">
+        <a class="navbar-brand" href="#">SAYLANI TECH</a>
+      </header>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#features">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button id="themeToggle" class="btn btn-default navbar-btn pull-right" style="margin-right:15px;">
+        🌙
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Building Digital <br>Solutions for Everyone</h1>
+        <p>SMIT is the technical wing of Saylani Welfare International Trust. It is not just a training center; it is a high-tech incubator designed to transform raw talent into world-class software engineers. By offering free, advanced technology courses, Saylani is building a digital army capable of competing in the global market.</p>
+        <a href="#pricing" class="btn btn-custom btn-lg">Get Started Today</a>
+      </div>
+      <div class="col-md-6">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" class="img-responsive hero-img" alt="SaaS Dashboard">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- CTA -->
+<section class="container text-center" style="padding:60px 0;">
+  <a href="#contact"
+     style="
+     display:inline-block;
+     background:white;
+     color:#0072ff;
+     font-size:18px;
+     font-weight:800;
+     padding:18px 45px;
+     border-radius:50px;
+     box-shadow:0 15px 30px rgba(0,0,0,0.3);
+     ">
+     Join Now – It’s Free
+  </a>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="container" style="padding: 100px 0; background: #f0f8ff; border-radius: 15px;">
+  <div class="section-title">
+    <h2 style="color:#0072ff;">What Our Students Say</h2>
+    <p style="color:#555;">Hear from those who experienced Saylani Tech firsthand.</p>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="feature-item" style="border: 1px solid #0072ff; background: #ffffff; transition: all 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+        <p style="font-style:italic; color:#222;">"The web development course transformed my career. The trainers are amazing!"</p>
+        <h5 style="color:#2bb673;">- Ali R.</h5>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-item" style="border: 1px solid #0072ff; background: #ffffff; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+        <p style="font-style:italic; color:#222;">"Thanks to Saylani Tech, I built my first chatbot in weeks!"</p>
+        <h5 style="color:#2bb673;">- Sara K.</h5>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-item" style="border: 1px solid #0072ff; background: #ffffff; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+        <p style="font-style:italic; color:#222;">"Backend development training here is world-class. Highly recommend."</p>
+        <h5 style="color:#2bb673;">- Ahmed M.</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="container" style="padding: 100px 0; background: #e6f2ff; border-radius:15px; margin-top:60px;">
+  <div class="section-title">
+    <h2 style="color:#0072ff;">Frequently Asked Questions</h2>
+    <p style="color:#555;">Answers to common questions about Saylani Tech courses.</p>
+  </div>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default" style="border:1px solid #0072ff; border-radius:10px; margin-bottom:15px;">
+      <div class="panel-heading" style="background:#2bb673; color:white; padding:15px; border-radius:10px;">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#faq1" style="color:white; text-decoration:none;">Are the courses free?</a>
+        </h4>
+      </div>
+      <div id="faq1" class="panel-collapse collapse in">
+        <div class="panel-body" style="padding:15px; color:#222;">Yes, all courses offered by Saylani Tech are completely free for students.</div>
+      </div>
+    </div>
+    <div class="panel panel-default" style="border:1px solid #0072ff; border-radius:10px; margin-bottom:15px;">
+      <div class="panel-heading" style="background:#2bb673; color:white; padding:15px; border-radius:10px;">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#faq2" style="color:white; text-decoration:none;">Do you provide certificates?</a>
+        </h4>
+      </div>
+      <div id="faq2" class="panel-collapse collapse">
+        <div class="panel-body" style="padding:15px; color:#222;">Yes, students receive a certificate after completing their course successfully.</div>
+      </div>
+    </div>
+    <div class="panel panel-default" style="border:1px solid #0072ff; border-radius:10px; margin-bottom:15px;">
+      <div class="panel-heading" style="background:#2bb673; color:white; padding:15px; border-radius:10px;">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#faq3" style="color:white; text-decoration:none;">Are these courses online or in-person?</a>
+        </h4>
+      </div>
+      <div id="faq3" class="panel-collapse collapse">
+        <div class="panel-body" style="padding:15px; color:#222;">Both online and in-person sessions are available depending on the program.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Secondary CTA after Features -->
+<section class="container text-center" style="padding: 80px 0; background: linear-gradient(90deg, #2bb673, #0072ff); color:white; border-radius:15px; margin-top:60px;">
+  <h2>Ready to Transform Your Career?</h2>
+  <p>Join thousands of students building digital solutions with Saylani Tech.</p>
+  <a href="#pricing" class="btn btn-lg" style="background:white; color:#0072ff; font-weight:700; border-radius:50px; padding:15px 40px;">Get Started Now</a>
+</section>
+
+
+
+<!-- Core Services -->
+<section id="features" class="container" style="padding: 100px 0;">
+  <div class="section-title">
+    <h2>Our Core Services</h2>
+    <p>Everything you need to digitize your workflow.</p>
+  </div>
+  <div class="row text-center">
+    <!-- Web Development -->
+    <div class="col-md-4">
+      <div class="feature-item">
+        <div class="feature-icon glyphicon glyphicon-menu-hamburger"></div>
+        <a href="#contact">
+          <img src="WEB.avif" alt="" style="width:100%; height:200px; object-fit:cover; margin-bottom:15px; border-radius:5px;">
+        </a>
+        <h4>Web Development</h4>
+        <p>We teach students practical web development skills, from HTML/CSS to modern frameworks.</p>
+      </div>
+    </div>
+    <!-- Chat Bot -->
+    <div class="col-md-4">
+      <div class="feature-item">
+        <div class="feature-icon glyphicon glyphicon-menu-hamburger"></div>
+        <a href="#contact">
+          <img src="chatbot.webp" alt="" style="width:100%; height:200px; object-fit:cover; margin-bottom:15px; border-radius:5px;">
+        </a>
+        <h4>Chat Bot</h4>
+        <p>Students learn to design intelligent chatbots using AI and modern tools.</p>
+      </div>
+    </div>
+    <!-- Backend Development -->
+    <div class="col-md-4">
+      <div class="feature-item">
+        <div class="feature-icon glyphicon glyphicon-menu-hamburger"></div>
+        <a href="#contact">
+          <img src="BackendDevelopment.webp" alt="" style="width:100%; height:200px; object-fit:cover; margin-bottom:15px; border-radius:5px;">
+        </a>
+        <h4>Backend Development</h4>
+        <p>Students learn to build secure, scalable backend systems and APIs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Smit Video Section -->
+<div class="container" style="padding-top:60px; padding-bottom:60px;">
+  <div class="section-title">
+    <h2>Watch Smit in Action</h2>
+  </div>
+  <div class="embed-responsive embed-responsive-16by9" style="border-radius:15px; overflow:hidden;">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Tove5xKRX4k" allowfullscreen></iframe>
+  </div>
+</div>
+
+
+
+
+<!-- Pricing Section -->
+<section id="pricing" class="container" style="padding: 100px 0;">
+  <div class="section-title">
+    <h2>Simple Pricing</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="pricing-box">
+        <h3>Startup</h3>
+        <div class="price">$29</div>
+        <p>For small businesses</p>
+        <hr>
+        <p>5 Projects</p>
+        <p>Email Support</p>
+        <button class="btn btn-default btn-block">Buy Now</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="pricing-box active">
+        <h3>Premium</h3>
+        <div class="price">$99</div>
+        <p>For growing teams</p>
+        <hr>
+        <p>Unlimited Projects</p>
+        <p>24/7 Priority Support</p>
+        <button class="btn btn-success btn-block" style="background:#2bb673; border:none;">Get Started</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="pricing-box">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <p>For large organizations</p>
+        <hr>
+        <p>Dedicated Manager</p>
+        <p>Custom Integration</p>
+        <button class="btn btn-default btn-block">Contact Us</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3448.600717481439!2d66.95440457457623!3d30.19139781159491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ed2e1001105b759%3A0x1385419ac571581!2sSMIT%20Quetta%20Campus!5e0!3m2!1sen!2s!4v1770390910921!5m2!1sen!2s" width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<!-- Contact Section -->
+<section id="contact" class="newsletter">
+  <div class="container">
+    <h2>Stay Updated</h2>
+    <p>Subscribe to get the latest news on digital transformation from Saylani Tech.</p>
+    <br>
+    <form class="form-inline">
+      <input type="email" class="form-control" placeholder="Enter your email address" required>
+      <button type="submit" class="btn-submit">Enroll</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p>&copy; 2026 Saylani Tech. All Rights Reserved. Built for Excellence.</p>
+    <!-- Social Media Icons -->
+    <div style="margin-top:15px;">
+      <a href="https://twitter.com" target="_blank" style="margin:0 10px; color:white; font-size:20px;">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.linkedin.com" target="_blank" style="margin:0 10px; color:white; font-size:20px;">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.facebook.com" target="_blank" style="margin:0 10px; color:white; font-size:20px;">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" style="margin:0 10px; color:white; font-size:20px;">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+  const toggle = document.getElementById("themeToggle");
+  toggle.addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+    this.innerHTML = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+  });
+</script>
+
+
+
+
+<script>
+  const animatedItems = document.querySelectorAll('.feature-item, .pricing-box, .section-title, .hero-img');
+
+  window.addEventListener('scroll', () => {
+    animatedItems.forEach(item => {
+      const position = item.getBoundingClientRect().top;
+      if (position < window.innerHeight - 100) {
+        item.classList.add('show');
+      }
+    });
+  });
+
+  animatedItems.forEach(item => item.classList.add('fade-up'));
+</script>
+
+</body>
+
+
+</html>
