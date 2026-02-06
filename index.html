@@ -1,412 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Saylani Tech – Digitizing the Future</title>                                                                                                                                 
+    <title>Breezed | Enterprise Intelligence</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">                                                                
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    body { font-family: 'Poppins', sans-serif; color: #555; line-height: 1.6; transition: background 0.3s, color 0.3s; }
-    h1, h2, h3, h4 { color: #222; font-weight: 700; transition: color 0.3s; }
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-breezed.css">
 
-    :root { --gradient-primary: linear-gradient(to right, #2bb673, #0072ff); }
+    <style>
+        :root {
+            --primary: #7F56D9;
+            --primary-glow: rgba(127, 86, 217, 0.2);
+            --bg-dark: #0C111D;
+            --card-bg: #ffffff;
+            --text-main: #101828;
+            --gray-sub: #667085;
+            --border-color: #EAECF0;
+        }
 
-    .navbar { background: #fff; border: none; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: background 0.3s; }
-    .navbar-brand { font-weight: 700; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; }
+        body { background-color: #F9FAFB; font-family: 'Inter', sans-serif; color: var(--text-main); }
+        #wrapper { display: flex; width: 100%; min-height: 100vh; }
 
-    .hero-section { background: var(--gradient-primary); color: white; padding: 120px 0 100px; position: relative; transition: background 0.3s, color 0.3s; }
-    .hero-section h1 { color: white; font-size: 45px; margin-bottom: 20px; }
-    .hero-section p { font-size: 18px; opacity: 0.9; margin-bottom: 30px; }
-    .hero-img { border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        /* --- ADVANCED SIDEBAR --- */
+        #sidebar-wrapper { width: 280px; background: var(--bg-dark); color: white; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
+        .sidebar-header { padding: 32px 24px; display: flex; align-items: center; gap: 12px; }
+        .system-orb { width: 32px; height: 32px; background: linear-gradient(135deg, #7F56D9 0%, #3E21C1 100%); border-radius: 8px; box-shadow: 0 0 15px var(--primary-glow); }
+        
+        .nav-label { font-size: 11px; font-weight: 700; color: #475467; text-transform: uppercase; padding: 20px 24px 8px; letter-spacing: 1px; }
+        .nav-item-btn { padding: 12px 24px; color: #D0D5DD; display: flex; align-items: center; transition: 0.3s; border: none; background: none; width: 100%; font-size: 14px; font-weight: 500; }
+        .nav-item-btn:hover, .nav-item-btn.active { color: white; background: rgba(255,255,255,0.05); }
+        .nav-item-btn i { margin-right: 12px; width: 20px; text-align: center; }
 
-    .section-title { margin-bottom: 60px; text-align: center; }
-    .feature-item { padding: 40px 20px; background: #fff; border-radius: 10px; transition: all 0.3s; border: 1px solid #f0f0f0; margin-bottom: 30px; }
-    .feature-item:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.1); transform: translateY(-5px); }
-    .feature-icon { font-size: 40px; margin-bottom: 20px; display: inline-block; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* --- TOP UTILITY BAR --- */
+        .main-content { flex: 1; display: flex; flex-direction: column; }
+        .top-nav { background: #fff; padding: 16px 32px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+        .monogram-avatar { width: 36px; height: 36px; background: #F2F4F7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--primary); border: 1px solid var(--border-color); }
 
-    .pricing-box { border: 1px solid #eee; padding: 40px 20px; border-radius: 10px; text-align: center; transition: all 0.3s; }
-    .pricing-box.active { border: 2px solid #2bb673; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-    .price { font-size: 40px; font-weight: 700; color: #2bb673; }
+        /* --- CARDS & GRIDS --- */
+        .glass-card { background: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05); height: 100%; }
+        .stat-num { font-size: 32px; font-weight: 700; letter-spacing: -1px; margin: 8px 0; }
+        
+        /* --- ANALYTICS NODES --- */
+        .node-map { height: 350px; background: #F9FAFB; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid var(--border-color); }
+        .node { position: absolute; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary-glow); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
-    .video-area { background: #f9f9f9; padding: 80px 0; }
+        /* --- DATA BARS --- */
+        .bar-stack { height: 200px; display: flex; align-items: flex-end; gap: 8px; margin-top: 20px; }
+        .bar-col { flex: 1; background: #E9D7FE; border-radius: 4px; position: relative; transition: 0.4s; }
+        .bar-col:hover { background: var(--primary); transform: translateY(-5px); }
 
-    .newsletter { background: var(--gradient-primary); padding: 60px 0; color: white; text-align: center; transition: background 0.3s, color 0.3s; }
-    .newsletter input { border-radius: 50px; padding: 25px; border: none; width: 300px; max-width: 100%; color: #333; }
-    .btn-submit { border-radius: 50px; padding: 12px 30px; background: #222; color: white; border: none; margin-left: 10px; }
-
-    footer { padding: 40px 0; background: #222; color: #fff; text-align: center; transition: background 0.3s, color 0.3s; }
-    .btn-custom { background: white; color: #0072ff; font-weight: 600; border-radius: 50px; padding: 12px 30px; }
-
-    /* Dark Mode */
-    body.dark-mode { background: #121212; color: #e0e0e0; }
-    body.dark-mode .navbar { background: #1e1e1e; }
-    body.dark-mode .hero-section { background: #1a1a1a; color: #fff; }
-    body.dark-mode .feature-item, body.dark-mode .pricing-box { background: #1f1f1f; border-color: #333; }
-    body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode p { color: #ffffff; }
-    body.dark-mode footer { background: #000; color: #fff; }
-
-
-
-    /* ===== Animations ===== */
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fade-up.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.scale-in {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.7s ease;
-}
-
-.scale-in.show {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Button hover upgrade */
-.btn-custom:hover,
-.btn-submit:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-  transition: 0.3s;
-}
-
-  </style>
+        .tab-panel { display: none; padding: 32px; }
+        .tab-panel.active { display: block; animation: slideUp 0.4s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
+
 <body>
+    <div id="wrapper">
+        <aside id="sidebar-wrapper">
+            <div class="sidebar-header">
+                <div class="system-orb"></div>
+                <span style="font-weight: 700; font-size: 20px; letter-spacing: -0.5px;">Breezed.io</span>
+            </div>
+            
+            <span class="nav-label">Core Systems</span>
+            <button class="nav-item-btn active" onclick="tab('dash', this)"><i class="fa fa-columns"></i> Command Hub</button>
+            <button class="nav-item-btn" onclick="tab('analytics', this)"><i class="fa fa-area-chart"></i> Node Analytics</button>
+            
+            <span class="nav-label">Management</span>
+            <button class="nav-item-btn" onclick="tab('teams', this)"><i class="fa fa-shield"></i> Security Ops</button>
+            <button class="nav-item-btn" onclick="tab('settings', this)"><i class="fa fa-sliders"></i> Global Config</button>
 
-<!-- Navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <header style="display: flex; align-items: center;">
-        <img width="70" src="smit.jpg" class="logo" style="margin-right: 10px;">
-        <a class="navbar-brand" href="#">SAYLANI TECH</a>
-      </header>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
-        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-      </button>
+            <div style="margin-top: auto; padding: 20px; border-top: 1px solid #1D2939;">
+                <div class="d-flex align-items-center">
+                    <div class="monogram-avatar mr-3">WC</div>
+                    <div>
+                        <div style="font-size: 13px; font-weight: 600;">White Cheese</div>
+                        <div style="font-size: 11px; color: var(--gray-sub);">Root Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <header class="top-nav">
+                <div class="search-box">
+                    <i class="fa fa-search text-muted mr-2"></i>
+                    <input type="text" placeholder="Query global nodes..." style="border: none; outline: none; background: transparent; width: 300px;">
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="mr-4" style="position: relative;">
+                        <i class="fa fa-bell-o text-muted"></i>
+                        <span style="position: absolute; top: -5px; right: -5px; background: var(--primary); color: white; border-radius: 50%; width: 14px; height: 14px; font-size: 8px; display: flex; align-items: center; justify-content: center;">3</span>
+                    </div>
+                    <div class="monogram-avatar">WC</div>
+                </div>
+            </header>
+
+            <div id="dash" class="tab-panel active">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="glass-card">
+                            <span class="nav-label p-0">Network Uptime</span>
+                            <div class="stat-num">99.98%</div>
+                            <div class="text-success small font-weight-bold"><i class="fa fa-arrow-up"></i> 0.02% optimal</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card">
+                            <span class="nav-label p-0">Traffic Velocity</span>
+                            <div class="stat-num">2.4 TB/s</div>
+                            <div class="text-success small font-weight-bold"><i class="fa fa-bolt"></i> Peak efficiency</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card">
+                            <span class="nav-label p-0">Active Protocols</span>
+                            <div class="stat-num">156</div>
+                            <div class="progress" style="height: 6px; margin-top: 15px;"><div class="progress-bar bg-primary" style="width: 75%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h6 class="font-weight-bold mb-4">20-Point Synchronization Matrix</h6>
+                    <div class="bar-stack">
+                        <div class="bar-col" style="height: 40%"></div><div class="bar-col" style="height: 60%"></div><div class="bar-col" style="height: 35%"></div><div class="bar-col" style="height: 80%"></div><div class="bar-col" style="height: 55%"></div><div class="bar-col" style="height: 95%"></div><div class="bar-col" style="height: 40%"></div><div class="bar-col" style="height: 70%"></div><div class="bar-col" style="height: 50%"></div><div class="bar-col" style="height: 85%"></div><div class="bar-col" style="height: 30%"></div><div class="bar-col" style="height: 65%"></div><div class="bar-col" style="height: 45%"></div><div class="bar-col" style="height: 90%"></div><div class="bar-col" style="height: 55%"></div><div class="bar-col" style="height: 75%"></div><div class="bar-col" style="height: 40%"></div><div class="bar-col" style="height: 80%"></div><div class="bar-col" style="height: 60%"></div><div class="bar-col" style="height: 98%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="analytics" class="tab-panel">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="glass-card">
+                            <h6 class="font-weight-bold mb-3">Global Infrastructure Node Map</h6>
+                            <div class="node-map">
+                                <div class="node" style="top: 20%; left: 30%;"></div>
+                                <div class="node" style="top: 50%; left: 10%;"></div>
+                                <div class="node" style="top: 80%; left: 40%;"></div>
+                                <div class="node" style="top: 30%; left: 70%;"></div>
+                                <div class="node" style="top: 60%; left: 85%;"></div>
+                                <div style="position: absolute; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 20px), repeating-linear-gradient(90deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 20px);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="glass-card">
+                            <h6 class="font-weight-bold">System Health</h6>
+                            <hr>
+                            <div class="mb-3"><span>CPU 1 (Primary)</span> <span class="float-right text-success">12%</span></div>
+                            <div class="mb-3"><span>Memory Pool</span> <span class="float-right text-primary">64GB</span></div>
+                            <div><span>Thread Count</span> <span class="float-right font-weight-bold">1,024</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="teams" class="tab-panel">
+                <div class="glass-card p-0 overflow-hidden">
+                    <table class="table mb-0">
+                        <thead class="bg-light"><tr><th>Endpoint</th><th>Risk Level</th><th>Access</th></tr></thead>
+                        <tbody>
+                            <tr><td>AWS_US_EAST_1</td><td><span class="badge badge-success">Low</span></td><td>Restricted</td></tr>
+                            <tr><td>AZURE_DE_NORTH</td><td><span class="badge badge-warning">Elevated</span></td><td>Read/Write</td></tr>
+                            <tr><td>LOCAL_NODE_01</td><td><span class="badge badge-success">Minimal</span></td><td>Root</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="settings" class="tab-panel">
+                <div class="glass-card col-md-6">
+                    <h6 class="font-weight-bold mb-4">Identity Configuration</h6>
+                    <label class="small font-weight-bold">Administrator Initials</label>
+                    <input type="text" class="form-control mb-3" value="WC">
+                    <button class="btn btn-primary btn-block" style="background:var(--primary); border:none;">Synchronize</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#features">Services</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-      <button id="themeToggle" class="btn btn-default navbar-btn pull-right" style="margin-right:15px;">
-        🌙
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- Hero Section -->
-<section class="hero-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h1>Building Digital <br>Solutions for Everyone</h1>
-        <p>SMIT is the technical wing of Saylani Welfare International Trust. It is not just a training center; it is a high-tech incubator designed to transform raw talent into world-class software engineers. By offering free, advanced technology courses, Saylani is building a digital army capable of competing in the global market.</p>
-        <a href="#pricing" class="btn btn-custom btn-lg">Get Started Today</a>
-      </div>
-      <div class="col-md-6">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" class="img-responsive hero-img" alt="SaaS Dashboard">
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<!-- CTA -->
-<section class="container text-center" style="padding:60px 0;">
-  <a href="#contact"
-     style="
-     display:inline-block;
-     background:white;
-     color:#0072ff;
-     font-size:18px;
-     font-weight:800;
-     padding:18px 45px;
-     border-radius:50px;
-     box-shadow:0 15px 30px rgba(0,0,0,0.3);
-     ">
-     Join Now – It’s Free
-  </a>
-</section>
-
-
-
-
-
-
-
-
-
-<!-- Testimonials Section -->
-<section id="testimonials" class="container" style="padding: 100px 0; background: #f0f8ff; border-radius: 15px;">
-  <div class="section-title">
-    <h2 style="color:#0072ff;">What Our Students Say</h2>
-    <p style="color:#555;">Hear from those who experienced Saylani Tech firsthand.</p>
-  </div>
-  <div class="row text-center">
-    <div class="col-md-4">
-      <div class="feature-item" style="border: 1px solid #0072ff; background: #ffffff; transition: all 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-        <p style="font-style:italic; color:#222;">"The web development course transformed my career. The trainers are amazing!"</p>
-        <h5 style="color:#2bb673;">- Ali R.</h5>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="feature-item" style="border: 1px solid #0072ff; background: #ffffff; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-        <p style="font-style:italic; color:#222;">"Thanks to Saylani Tech, I built my first chatbot in weeks!"</p>
-        <h5 style="color:#2bb673;">- Sara K.</h5>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="feature-item" style="border: 1px solid #0072ff; background: #ffffff; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-        <p style="font-style:italic; color:#222;">"Backend development training here is world-class. Highly recommend."</p>
-        <h5 style="color:#2bb673;">- Ahmed M.</h5>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ Section -->
-<section id="faq" class="container" style="padding: 100px 0; background: #e6f2ff; border-radius:15px; margin-top:60px;">
-  <div class="section-title">
-    <h2 style="color:#0072ff;">Frequently Asked Questions</h2>
-    <p style="color:#555;">Answers to common questions about Saylani Tech courses.</p>
-  </div>
-  <div class="panel-group" id="accordion">
-    <div class="panel panel-default" style="border:1px solid #0072ff; border-radius:10px; margin-bottom:15px;">
-      <div class="panel-heading" style="background:#2bb673; color:white; padding:15px; border-radius:10px;">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#faq1" style="color:white; text-decoration:none;">Are the courses free?</a>
-        </h4>
-      </div>
-      <div id="faq1" class="panel-collapse collapse in">
-        <div class="panel-body" style="padding:15px; color:#222;">Yes, all courses offered by Saylani Tech are completely free for students.</div>
-      </div>
-    </div>
-    <div class="panel panel-default" style="border:1px solid #0072ff; border-radius:10px; margin-bottom:15px;">
-      <div class="panel-heading" style="background:#2bb673; color:white; padding:15px; border-radius:10px;">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#faq2" style="color:white; text-decoration:none;">Do you provide certificates?</a>
-        </h4>
-      </div>
-      <div id="faq2" class="panel-collapse collapse">
-        <div class="panel-body" style="padding:15px; color:#222;">Yes, students receive a certificate after completing their course successfully.</div>
-      </div>
-    </div>
-    <div class="panel panel-default" style="border:1px solid #0072ff; border-radius:10px; margin-bottom:15px;">
-      <div class="panel-heading" style="background:#2bb673; color:white; padding:15px; border-radius:10px;">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#faq3" style="color:white; text-decoration:none;">Are these courses online or in-person?</a>
-        </h4>
-      </div>
-      <div id="faq3" class="panel-collapse collapse">
-        <div class="panel-body" style="padding:15px; color:#222;">Both online and in-person sessions are available depending on the program.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Secondary CTA after Features -->
-<section class="container text-center" style="padding: 80px 0; background: linear-gradient(90deg, #2bb673, #0072ff); color:white; border-radius:15px; margin-top:60px;">
-  <h2>Ready to Transform Your Career?</h2>
-  <p>Join thousands of students building digital solutions with Saylani Tech.</p>
-  <a href="#pricing" class="btn btn-lg" style="background:white; color:#0072ff; font-weight:700; border-radius:50px; padding:15px 40px;">Get Started Now</a>
-</section>
-
-
-
-<!-- Core Services -->
-<section id="features" class="container" style="padding: 100px 0;">
-  <div class="section-title">
-    <h2>Our Core Services</h2>
-    <p>Everything you need to digitize your workflow.</p>
-  </div>
-  <div class="row text-center">
-    <!-- Web Development -->
-    <div class="col-md-4">
-      <div class="feature-item">
-        <div class="feature-icon glyphicon glyphicon-menu-hamburger"></div>
-        <a href="#contact">
-          <img src="WEB.avif" alt="" style="width:100%; height:200px; object-fit:cover; margin-bottom:15px; border-radius:5px;">
-        </a>
-        <h4>Web Development</h4>
-        <p>We teach students practical web development skills, from HTML/CSS to modern frameworks.</p>
-      </div>
-    </div>
-    <!-- Chat Bot -->
-    <div class="col-md-4">
-      <div class="feature-item">
-        <div class="feature-icon glyphicon glyphicon-menu-hamburger"></div>
-        <a href="#contact">
-          <img src="chatbot.webp" alt="" style="width:100%; height:200px; object-fit:cover; margin-bottom:15px; border-radius:5px;">
-        </a>
-        <h4>Chat Bot</h4>
-        <p>Students learn to design intelligent chatbots using AI and modern tools.</p>
-      </div>
-    </div>
-    <!-- Backend Development -->
-    <div class="col-md-4">
-      <div class="feature-item">
-        <div class="feature-icon glyphicon glyphicon-menu-hamburger"></div>
-        <a href="#contact">
-          <img src="BackendDevelopment.webp" alt="" style="width:100%; height:200px; object-fit:cover; margin-bottom:15px; border-radius:5px;">
-        </a>
-        <h4>Backend Development</h4>
-        <p>Students learn to build secure, scalable backend systems and APIs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Smit Video Section -->
-<div class="container" style="padding-top:60px; padding-bottom:60px;">
-  <div class="section-title">
-    <h2>Watch Smit in Action</h2>
-  </div>
-  <div class="embed-responsive embed-responsive-16by9" style="border-radius:15px; overflow:hidden;">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Tove5xKRX4k" allowfullscreen></iframe>
-  </div>
-</div>
-
-
-
-
-<!-- Pricing Section -->
-<section id="pricing" class="container" style="padding: 100px 0;">
-  <div class="section-title">
-    <h2>Simple Pricing</h2>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="pricing-box">
-        <h3>Startup</h3>
-        <div class="price">$29</div>
-        <p>For small businesses</p>
-        <hr>
-        <p>5 Projects</p>
-        <p>Email Support</p>
-        <button class="btn btn-default btn-block">Buy Now</button>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="pricing-box active">
-        <h3>Premium</h3>
-        <div class="price">$99</div>
-        <p>For growing teams</p>
-        <hr>
-        <p>Unlimited Projects</p>
-        <p>24/7 Priority Support</p>
-        <button class="btn btn-success btn-block" style="background:#2bb673; border:none;">Get Started</button>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="pricing-box">
-        <h3>Enterprise</h3>
-        <div class="price">Custom</div>
-        <p>For large organizations</p>
-        <hr>
-        <p>Dedicated Manager</p>
-        <p>Custom Integration</p>
-        <button class="btn btn-default btn-block">Contact Us</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3448.600717481439!2d66.95440457457623!3d30.19139781159491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ed2e1001105b759%3A0x1385419ac571581!2sSMIT%20Quetta%20Campus!5e0!3m2!1sen!2s!4v1770390910921!5m2!1sen!2s" width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-<!-- Contact Section -->
-<section id="contact" class="newsletter">
-  <div class="container">
-    <h2>Stay Updated</h2>
-    <p>Subscribe to get the latest news on digital transformation from Saylani Tech.</p>
-    <br>
-    <form class="form-inline">
-      <input type="email" class="form-control" placeholder="Enter your email address" required>
-      <button type="submit" class="btn-submit">Enroll</button>
-    </form>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="container text-center">
-    <p>&copy; 2026 Saylani Tech. All Rights Reserved. Built for Excellence.</p>
-    <!-- Social Media Icons -->
-    <div style="margin-top:15px;">
-      <a href="https://twitter.com" target="_blank" style="margin:0 10px; color:white; font-size:20px;">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="https://www.linkedin.com" target="_blank" style="margin:0 10px; color:white; font-size:20px;">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://www.facebook.com" target="_blank" style="margin:0 10px; color:white; font-size:20px;">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://www.instagram.com" target="_blank" style="margin:0 10px; color:white; font-size:20px;">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-  </div>
-</footer>
-
-
-<!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<script>
-  const toggle = document.getElementById("themeToggle");
-  toggle.addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
-    this.innerHTML = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-  });
-</script>
-
-
-
-
-<script>
-  const animatedItems = document.querySelectorAll('.feature-item, .pricing-box, .section-title, .hero-img');
-
-  window.addEventListener('scroll', () => {
-    animatedItems.forEach(item => {
-      const position = item.getBoundingClientRect().top;
-      if (position < window.innerHeight - 100) {
-        item.classList.add('show');
-      }
-    });
-  });
-
-  animatedItems.forEach(item => item.classList.add('fade-up'));
-</script>
-
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script>
+        function tab(id, el) {
+            $('.tab-panel').removeClass('active');
+            $('#' + id).addClass('active');
+            $('.nav-item-btn').removeClass('active');
+            $(el).addClass('active');
+        }
+    </script>
 </body>
-
-
 </html>
